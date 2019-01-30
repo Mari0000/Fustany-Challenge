@@ -1,4 +1,4 @@
-json.extract! product, :id, :name, :price, :quantity, :discount, :created_at, :updated_at
+json.extract! product, :id, :name, :price, :quantity, :discount, :favourite, :created_at, :updated_at
 json.category do 
   json.partial! 'category', category: product.category
 end

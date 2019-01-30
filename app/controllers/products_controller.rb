@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :add_to_favourite]
   before_action :set_category, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /products
@@ -11,6 +12,11 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+  end
+
+  def add_to_favourite
+    @product.change_status
+    @product.save
   end
 
   # GET /products/new
