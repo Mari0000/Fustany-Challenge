@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_product, only: %i[show edit update destroy add_to_favourite remove_from_favourite]
-  before_action :set_category, only: %i[index show new edit update destroy]
+  before_action :set_category, only: %i[index show new edit update destroy add_to_favourite remove_from_favourite]
 
   # GET /products
   # GET /products.json
@@ -14,10 +14,11 @@ class ProductsController < ApplicationController
   def show; end
 
   def add_to_favourite
-    @product.change_status
+    @product.change_status(true)
     respond_to do |format|
       if @product.save
         format.html { redirect_to favourits_path, notice: 'Product was successfully added to favourits.' }
+        format.json { render :add_to_favourite, status: :created, location: category_product_path(@category, @product) }
       else
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -25,10 +26,11 @@ class ProductsController < ApplicationController
   end
 
   def remove_from_favourite
-    @product.change_status
+    @product.change_status(false)
     respond_to do |format|
       if @product.save
         format.html { redirect_to favourits_path, notice: 'Product was successfully removed from favourits.' }
+        format.json { render :remove_from_favourite, status: :created, location: category_product_path(@category, @product) }
       else
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end

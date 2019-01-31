@@ -7320,3 +7320,348 @@ Processing by CategoriesController#index as HTML
 Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/categories" for 127.0.0.1 at 2019-01-31 04:04:50 +0200
+Processing by CategoriesController#index as */*
+  Parameters: {"category"=>{}}
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 22ms (Views: 18.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories.json" for 127.0.0.1 at 2019-01-31 04:04:58 +0200
+Processing by CategoriesController#index as JSON
+  Parameters: {"category"=>{}}
+  Rendering categories/index.json.jbuilder
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/_category.json.jbuilder (0.7ms)
+  Rendered categories/_category.json.jbuilder (0.2ms)
+  Rendered categories/_category.json.jbuilder (0.2ms)
+  Rendered categories/_category.json.jbuilder (0.2ms)
+  Rendered categories/_category.json.jbuilder (0.2ms)
+  Rendered categories/_category.json.jbuilder (0.2ms)
+  Rendered categories/_category.json.jbuilder (0.2ms)
+  Rendered categories/index.json.jbuilder (50.8ms)
+Completed 200 OK in 53ms (Views: 52.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories/4/products.json" for 127.0.0.1 at 2019-01-31 04:05:34 +0200
+Processing by ProductsController#index as JSON
+  Parameters: {"category_id"=>"4", "product"=>{}}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering products/index.json.jbuilder
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  Rendered products/_category.json.jbuilder (0.6ms)
+  Rendered products/_product.json.jbuilder (1.6ms)
+  Rendered products/_category.json.jbuilder (0.2ms)
+  Rendered products/_product.json.jbuilder (0.7ms)
+  Rendered products/_category.json.jbuilder (0.1ms)
+  Rendered products/_product.json.jbuilder (0.7ms)
+  Rendered products/index.json.jbuilder (6.0ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/favorits.json" for 127.0.0.1 at 2019-01-31 04:07:09 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favorits.json"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/favourits.json" for 127.0.0.1 at 2019-01-31 04:07:24 +0200
+Processing by FavouritsController#index as JSON
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.json.jbuilder
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (0.7ms)
+  Rendered products/_product.json.jbuilder (2.9ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (0.4ms)
+  Rendered products/_product.json.jbuilder (1.9ms)
+  Rendered favourits/index.json.jbuilder (7.3ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/4.json" for 127.0.0.1 at 2019-01-31 04:08:40 +0200
+Processing by CategoriesController#show as JSON
+  Parameters: {"id"=>"4", "category"=>{}}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering categories/show.json.jbuilder
+  Rendered categories/_category.json.jbuilder (0.6ms)
+  Rendered categories/show.json.jbuilder (1.5ms)
+Completed 200 OK in 9ms (Views: 3.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/categories/4/products.json" for 127.0.0.1 at 2019-01-31 04:08:45 +0200
+Processing by ProductsController#index as JSON
+  Parameters: {"category_id"=>"4", "product"=>{}}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering products/index.json.jbuilder
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  Rendered products/_category.json.jbuilder (0.7ms)
+  Rendered products/_product.json.jbuilder (2.0ms)
+  Rendered products/_category.json.jbuilder (0.2ms)
+  Rendered products/_product.json.jbuilder (1.5ms)
+  Rendered products/_category.json.jbuilder (0.2ms)
+  Rendered products/_product.json.jbuilder (0.8ms)
+  Rendered products/index.json.jbuilder (17.7ms)
+Completed 200 OK in 22ms (Views: 19.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/categories/4/products/2/add_to_favourite.json" for 127.0.0.1 at 2019-01-31 04:09:02 +0200
+Processing by ProductsController#add_to_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"2", "product"=>{}}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "t"], ["updated_at", "2019-01-31 02:09:02.462700"], ["id", 2]]
+  [1m[35m (154.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 406 Not Acceptable in 160ms (ActiveRecord: 155.4ms)
+
+
+  
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  
+app/controllers/products_controller.rb:18:in `add_to_favourite'
+Started GET "/categories/4/products/2/add_to_favourite" for 127.0.0.1 at 2019-01-31 04:09:21 +0200
+Processing by ProductsController#add_to_favourite as */*
+  Parameters: {"category_id"=>"4", "id"=>"2", "product"=>{}}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "f"], ["updated_at", "2019-01-31 02:09:21.332884"], ["id", 2]]
+  [1m[35m (164.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/favourits
+Completed 302 Found in 171ms (ActiveRecord: 164.9ms)
+
+
+Started GET "/favourits" for 127.0.0.1 at 2019-01-31 04:09:21 +0200
+Processing by FavouritsController#index as */*
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 23ms (Views: 18.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories/4/products/2/add_to_favourite.json" for 127.0.0.1 at 2019-01-31 04:09:37 +0200
+Processing by ProductsController#add_to_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"2", "product"=>{}}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "t"], ["updated_at", "2019-01-31 02:09:37.592423"], ["id", 2]]
+  [1m[35m (133.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 406 Not Acceptable in 139ms (ActiveRecord: 134.8ms)
+
+
+  
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  
+app/controllers/products_controller.rb:18:in `add_to_favourite'
+Started GET "/categories/4/products/2/add_to_favourite.json" for 127.0.0.1 at 2019-01-31 04:10:43 +0200
+Processing by ProductsController#add_to_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"2", "product"=>{}}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "f"], ["updated_at", "2019-01-31 02:10:43.497627"], ["id", 2]]
+  [1m[35m (229.4ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 302ms (ActiveRecord: 231.1ms)
+
+
+  
+NoMethodError (undefined method `product_url' for #<ProductsController:0x007fa938c9ae58>
+Did you mean?  product_params):
+  
+app/controllers/products_controller.rb:21:in `block (2 levels) in add_to_favourite'
+app/controllers/products_controller.rb:18:in `add_to_favourite'
+Started GET "/categories/4/products/2/add_to_favourite.json" for 127.0.0.1 at 2019-01-31 04:12:37 +0200
+Processing by ProductsController#add_to_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"2", "product"=>{}}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "t"], ["updated_at", "2019-01-31 02:12:37.342852"], ["id", 2]]
+  [1m[35m (212.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 236ms (ActiveRecord: 214.1ms)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :category_id=>nil, :controller=>"products", :id=>"2"}, missing required keys: [:category_id]):
+  
+app/controllers/products_controller.rb:21:in `block (2 levels) in add_to_favourite'
+app/controllers/products_controller.rb:18:in `add_to_favourite'
+Started GET "/categories/4/products/2/add_to_favourite.json" for 127.0.0.1 at 2019-01-31 04:13:08 +0200
+Processing by ProductsController#add_to_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"2", "product"=>{}}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "f"], ["updated_at", "2019-01-31 02:13:08.144203"], ["id", 2]]
+  [1m[35m (161.9ms)[0m  [1m[36mcommit transaction[0m
+  Rendering products/add_to_favourite.json.jbuilder
+  Rendered products/_category.json.jbuilder (0.5ms)
+  Rendered products/_product.json.jbuilder (1.5ms)
+  Rendered products/add_to_favourite.json.jbuilder (2.5ms)
+Completed 201 Created in 191ms (Views: 4.4ms | ActiveRecord: 164.0ms)
+
+
+Started GET "/favourits.json" for 127.0.0.1 at 2019-01-31 04:13:28 +0200
+Processing by FavouritsController#index as JSON
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.json.jbuilder
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (0.7ms)
+  Rendered products/_product.json.jbuilder (2.7ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (0.3ms)
+  Rendered products/_product.json.jbuilder (1.6ms)
+  Rendered favourits/index.json.jbuilder (7.0ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/favourits.json" for 127.0.0.1 at 2019-01-31 04:13:30 +0200
+Processing by FavouritsController#index as JSON
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.json.jbuilder
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (0.7ms)
+  Rendered products/_product.json.jbuilder (2.9ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (0.4ms)
+  Rendered products/_product.json.jbuilder (2.0ms)
+  Rendered favourits/index.json.jbuilder (7.6ms)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories/4/products/2/add_to_favourite.json" for 127.0.0.1 at 2019-01-31 04:13:43 +0200
+Processing by ProductsController#add_to_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"2", "product"=>{}}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "t"], ["updated_at", "2019-01-31 02:13:43.906591"], ["id", 2]]
+  [1m[35m (173.6ms)[0m  [1m[36mcommit transaction[0m
+  Rendering products/add_to_favourite.json.jbuilder
+  Rendered products/_category.json.jbuilder (0.9ms)
+  Rendered products/_product.json.jbuilder (3.7ms)
+  Rendered products/add_to_favourite.json.jbuilder (5.5ms)
+Completed 201 Created in 189ms (Views: 8.0ms | ActiveRecord: 175.7ms)
+
+
+Started GET "/favourits.json" for 127.0.0.1 at 2019-01-31 04:14:05 +0200
+Processing by FavouritsController#index as JSON
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.json.jbuilder
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (0.6ms)
+  Rendered products/_product.json.jbuilder (2.6ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (0.3ms)
+  Rendered products/_product.json.jbuilder (1.6ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (0.3ms)
+  Rendered products/_product.json.jbuilder (1.6ms)
+  Rendered favourits/index.json.jbuilder (9.2ms)
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories/4/products/1/remove_from_favourite.json" for 127.0.0.1 at 2019-01-31 04:14:38 +0200
+Processing by ProductsController#remove_from_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"1", "product"=>{}}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "f"], ["updated_at", "2019-01-31 02:14:38.572649"], ["id", 1]]
+  [1m[35m (122.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 129ms (ActiveRecord: 123.2ms)
+
+
+  
+ActionView::MissingTemplate (Missing template products/remove_from_favourite, application/remove_from_favourite with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/mariosobhy/Desktop/Fustany-Challenge/app/views"
+):
+  
+app/controllers/products_controller.rb:33:in `block (2 levels) in remove_from_favourite'
+app/controllers/products_controller.rb:30:in `remove_from_favourite'
+Started GET "/categories/4/products/1/remove_from_favourite.json" for 127.0.0.1 at 2019-01-31 04:15:20 +0200
+Processing by ProductsController#remove_from_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"1", "product"=>{}}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "t"], ["updated_at", "2019-01-31 02:15:20.598122"], ["id", 1]]
+  [1m[35m (276.3ms)[0m  [1m[36mcommit transaction[0m
+  Rendering products/remove_from_favourite.json.jbuilder
+  Rendered products/_category.json.jbuilder (0.6ms)
+  Rendered products/_product.json.jbuilder (1.5ms)
+  Rendered products/remove_from_favourite.json.jbuilder (2.8ms)
+Completed 201 Created in 286ms (Views: 4.4ms | ActiveRecord: 277.3ms)
+
+
+Started GET "/categories/4/products/1/remove_from_favourite.json" for 127.0.0.1 at 2019-01-31 04:15:23 +0200
+Processing by ProductsController#remove_from_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"1", "product"=>{}}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "f"], ["updated_at", "2019-01-31 02:15:23.723319"], ["id", 1]]
+  [1m[35m (167.8ms)[0m  [1m[36mcommit transaction[0m
+  Rendering products/remove_from_favourite.json.jbuilder
+  Rendered products/_category.json.jbuilder (0.5ms)
+  Rendered products/_product.json.jbuilder (1.5ms)
+  Rendered products/remove_from_favourite.json.jbuilder (2.7ms)
+Completed 201 Created in 177ms (Views: 4.3ms | ActiveRecord: 169.1ms)
+
+
+Started GET "/favourits.json" for 127.0.0.1 at 2019-01-31 04:15:29 +0200
+Processing by FavouritsController#index as JSON
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.json.jbuilder
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (1.9ms)
+  Rendered products/_product.json.jbuilder (5.7ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered favourits/_category.json.jbuilder (0.5ms)
+  Rendered products/_product.json.jbuilder (2.7ms)
+  Rendered favourits/index.json.jbuilder (12.9ms)
+Completed 200 OK in 17ms (Views: 14.8ms | ActiveRecord: 0.6ms)
+
+
