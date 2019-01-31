@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+  <div class="collection">
+    <a href="#!" class="collection-item"><span class="badge"><%= @category.name %></span>Name</a>
+  </div>
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

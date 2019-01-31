@@ -10,24 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190130013045) do
-
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 20_190_130_013_045) do
+  create_table 'categories', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.decimal "price", default: "0.0"
-    t.integer "quantity", default: 0
-    t.decimal "discount", default: "0.0"
-    t.integer "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "favourite", default: false
-    t.index ["category_id"], name: "index_products_on_category_id"
+  create_table 'products', force: :cascade do |t|
+    t.string 'name'
+    t.decimal 'price', default: '0.0'
+    t.integer 'quantity', default: 0
+    t.decimal 'discount', default: '0.0'
+    t.integer 'category_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.boolean 'favourite', default: false
+    t.index ['category_id'], name: 'index_products_on_category_id'
   end
-
 end

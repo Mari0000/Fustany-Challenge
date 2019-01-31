@@ -1,6 +1,5 @@
 class FavouritsController < ApplicationController
-
-  def index 
+  def index
     @products = Product.favourite_list
-  end 
+  end
 end

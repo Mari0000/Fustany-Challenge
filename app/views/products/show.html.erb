@@ -1,26 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <td><%= @product.name %></td>
-  </tr>
-  <tr>
-    <th>Price</th>
-    <td><%= @product.price %></td>
-  </tr>
-  <tr>
-    <th>Quantity</th>
-    <td><%= @product.quantity %></td>
-  </tr>
-  <tr>
-    <th>Discount</th>
-    <td><%= @product.discount %></td>
-  </tr>
-  <tr>
-    <th>Category</th>
-    <td><%= @product.category.name %></td>
-  </tr>
-</table>
+  <div class="collection">
+    <a href="#!" class="collection-item"><span class="badge"><%= @product.name %></span>Name</a>
+    <a href="#!" class="collection-item"><span class="badge"><%= @product.price %></span>Price</a>
+    <a href="#!" class="collection-item"><span class="badge"><%= @product.quantity %></span>Quantity</a>
+    <a href="#!" class="collection-item"><span class="badge"><%= @product.discount %></span>Discount</a>
+    <a href="#!" class="collection-item"><span class="badge"><%= @product.category&.name %></span>Category</a>
+  </div>
 <%= link_to 'Edit', edit_category_product_path(@product.category, @product) %> |
 <%= link_to 'Back', category_products_path %>

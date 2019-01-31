@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :add_to_favourite, :remove_from_favourite]
-  before_action :set_category, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_product, only: %i[show edit update destroy add_to_favourite remove_from_favourite]
+  before_action :set_category, only: %i[index show edit update destroy]
 
   # GET /products
   # GET /products.json
@@ -11,8 +11,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   # GET /products/1.json
-  def show
-  end
+  def show; end
 
   def add_to_favourite
     @product.change_status
@@ -25,16 +24,16 @@ class ProductsController < ApplicationController
     end
   end
 
-  def remove_from_favourite 
+  def remove_from_favourite
     @product.change_status
     respond_to do |format|
       if @product.save
-        format.html { redirect_to favourits_path, notice: 'Product was removed added to favourits.' }
+        format.html { redirect_to favourits_path, notice: 'Product was successfully removed from favourits.' }
       else
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
-  end 
+  end
 
   # GET /products/new
   def new
@@ -42,8 +41,7 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /products
   # POST /products.json
@@ -52,7 +50,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to category_product_path(@product.category, @product), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -66,7 +64,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to category_product_path(@product.category, @product), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -86,17 +84,18 @@ class ProductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
 
-    def set_category 
-      @category = Category.find(params[:category_id])
-    end 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:id, :name, :price, :quantity, :discount, :category_id)
-    end
+  def set_category
+    @category = Category.find(params[:category_id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def product_params
+    params.require(:product).permit(:id, :name, :price, :quantity, :discount, :category_id)
+  end
 end
