@@ -3,6 +3,6 @@ class Product < ApplicationRecord
   scope :favourite_list, -> { where(favourite: true) }
 
   def change_status 
-    self.favourite = true
+    self.favourite = !self.favourite
   end 
 end

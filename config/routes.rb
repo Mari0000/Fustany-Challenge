@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :categories do  
     resources :products do 
       member do 
-        put :add_to_favourite
+        get :add_to_favourite
+        get :remove_from_favourite
       end 
     end
   end

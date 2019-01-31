@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :add_to_favourite]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :add_to_favourite, :remove_from_favourite]
   before_action :set_category, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /products
@@ -16,8 +16,25 @@ class ProductsController < ApplicationController
 
   def add_to_favourite
     @product.change_status
-    @product.save
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to favourits_path, notice: 'Product was successfully added to favourits.' }
+      else
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
   end
+
+  def remove_from_favourite 
+    @product.change_status
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to favourits_path, notice: 'Product was removed added to favourits.' }
+      else
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end 
 
   # GET /products/new
   def new
