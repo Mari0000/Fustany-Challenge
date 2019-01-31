@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_product, only: %i[show edit update destroy add_to_favourite remove_from_favourite]
-  before_action :set_category, only: %i[index show edit update destroy]
+  before_action :set_category, only: %i[index show new edit update destroy]
 
   # GET /products
   # GET /products.json
@@ -78,7 +78,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to category_products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

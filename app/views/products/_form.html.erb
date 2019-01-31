@@ -1,4 +1,6 @@
-<%= form_for product, url: category_product_path do |form| %>
+<div class="row">
+
+<%= form_for product, url: category_products_path do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -11,30 +13,43 @@
     </div>
   <% end %>
 
-  <div class=''>
-    <div>
-      <%= form.label 'Name' %>
-      <%= form.text_field :name %>
-    </div> 
-    <div>
-      <%= form.label 'Price' %>
-      <%= form.number_field :price %>
-    </div> 
-    <div>
-      <%= form.label 'Quantity' %>
-      <%= form.number_field :quantity %>
-    </div> 
-    <div>
-      <%= form.label 'Discount' %>
-      <%= form.number_field :discount %>
-    </div> 
-    <div>
-      <%= form.label 'Category' %>
-      <%= form.select :category_id, Category.all.map { |cat| [cat.name, cat.id] } %>
-    </div> 
+      <div class="row">
+        <div class="input-field col s6">
+          <%= form.text_field :name, id: 'name', type: 'text', class: 'validate' %>
+          <label for="name">Name</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <%= form.number_field :price, id: 'price', type: 'number', class: 'validate' %>
+          <label for="name">Price</label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s6">
+          <%= form.number_field :quantity, id: 'quantity', type: 'number', class: 'validate' %>
+          <label for="name">Quantity</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <%= form.number_field :discount, id: 'discount', type: 'number', class: 'validate' %>
+          <label for="name">Discount</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= form.select :category_id, Category.all.map { |cat| [cat.name, cat.id] }, class: 'validate' %>
+          <%= form.label "This Product assigned to #{@category.name} Category" %>
+        </div>
+      </div>
+  <div class="actions">
+    <%= form.submit 'Create', class: 'waves-effect waves-light btn'%>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
+</div>
