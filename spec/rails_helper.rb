@@ -57,19 +57,25 @@ RSpec.configure do |config|
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
-  config.integrate do |with|
-    # Choose a test framework:
-    with.test_framework :rspec
-    with.test_framework :minitest
-    with.test_framework :minitest_4
-    with.test_framework :test_unit
 
-    # Choose one or more libraries:
-    with.library :active_record
-    with.library :active_model
-    with.library :action_controller
-    # Or, choose all of the above:
-    with.library :rails
+  # config.filter_gems_from_backtrace("gem name")
+    Shoulda::Matchers.configure do |config|
+      config.integrate do |with|
+        # Choose a test framework:
+        with.test_framework :rspec
+        # Choose one or more libraries:
+        with.library :rails
+      end
+    end
+   config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
 end
