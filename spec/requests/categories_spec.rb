@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe 'Categories', type: :request do
-  # initialize test data
+RSpec.describe "Categories", type: :request do
+  # initialize test data 
   let!(:categories) { create_list(:category, 10) }
   let(:category_id) { categories.first.id }
 
-  describe 'GET /categories' do
-    # make HTTP get request before each example
+  describe "GET /categories" do
+  	# make HTTP get request before each example
     before { get '/categories.json' }
 
-    it 'returns status code 200' do
+    it "returns status code 200" do
       expect(response).to have_http_status(200)
     end
 
@@ -20,10 +20,9 @@ RSpec.describe 'Categories', type: :request do
     end
   end
 
-  # Test suite for GET /categories/:id
+   # Test suite for GET /categories/:id
   describe 'GET /categories/:id' do
     before { get "/categories/#{category_id}.json" }
-
     context 'when the record exists' do
       it 'returns the category' do
         expect(json).not_to be_empty
@@ -34,7 +33,7 @@ RSpec.describe 'Categories', type: :request do
         expect(response).to have_http_status(200)
       end
     end
-
+=begin
     context 'when the record does not exist' do
       let(:category_id) { 100 }
 
@@ -46,5 +45,6 @@ RSpec.describe 'Categories', type: :request do
         expect(response.body).to match(/Couldn't find Category/)
       end
     end
+=end
   end
 end
