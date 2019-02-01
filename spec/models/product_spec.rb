@@ -4,5 +4,5 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   # Association test
   # ensure a product record belongs to a single category record
-  it { should belong_to(:category) }
+  it { is_expected.to belong_to(:category) }
 end
