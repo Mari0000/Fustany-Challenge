@@ -9345,3 +9345,106 @@ Processing by CategoriesController#index as HTML
 Completed 200 OK in 23ms (Views: 22.1ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/categories/5/products" for 127.0.0.1 at 2019-02-02 00:54:07 +0200
+Processing by ProductsController#index as HTML
+  Parameters: {"category_id"=>"5"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 5]]
+  Rendered products/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 36ms (Views: 28.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/favourits" for 127.0.0.1 at 2019-02-02 00:54:13 +0200
+Processing by FavouritsController#index as HTML
+  Rendering favourits/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered favourits/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 29ms (Views: 26.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2019-02-02 00:54:14 +0200
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 38ms (Views: 36.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2019-02-02 00:54:15 +0200
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 27ms (Views: 25.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2019-02-02 00:54:16 +0200
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/4" for 127.0.0.1 at 2019-02-02 00:59:43 +0200
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  Rendered categories/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 26ms (Views: 16.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/categories/4/products" for 127.0.0.1 at 2019-02-02 00:59:46 +0200
+Processing by ProductsController#index as HTML
+  Parameters: {"category_id"=>"4"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  Rendered products/index.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 38ms (Views: 30.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/categories/4/products.json" for 127.0.0.1 at 2019-02-02 00:59:49 +0200
+Processing by ProductsController#index as JSON
+  Parameters: {"category_id"=>"4"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering products/index.json.jbuilder
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+  Rendered shared/_category.json.jbuilder (0.7ms)
+  Rendered products/_product.json.jbuilder (2.1ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered products/_product.json.jbuilder (0.9ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered products/_product.json.jbuilder (0.9ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered products/_product.json.jbuilder (0.9ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered products/_product.json.jbuilder (1.0ms)
+  Rendered products/index.json.jbuilder (11.5ms)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories/4" for 127.0.0.1 at 2019-02-02 00:59:59 +0200
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  Rendered categories/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/categories/4.json" for 127.0.0.1 at 2019-02-02 01:00:03 +0200
+Processing by CategoriesController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering categories/show.json.jbuilder
+  Rendered shared/_category.json.jbuilder (0.8ms)
+  Rendered categories/show.json.jbuilder (1.9ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.1ms)
+
+
