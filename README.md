@@ -1,6 +1,6 @@
 # Fustany-Challenge
 
-[project.com](https://fustany-challenge.herokuapp.com)
+[fustany-challenge.herokuapp.com](https://fustany-challenge.herokuapp.com)
 
 ## Install
 
