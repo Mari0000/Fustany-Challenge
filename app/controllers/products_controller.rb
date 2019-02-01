@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_product, only: %i[show edit update destroy add_to_favourite remove_from_favourite]
-  before_action :set_category, only: %i[index show new edit update destroy add_to_favourite remove_from_favourite]
+  before_action :set_category, only: %i[create index show new edit update destroy add_to_favourite remove_from_favourite]
 
   # GET /products
   # GET /products.json
@@ -49,11 +49,12 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @product.category = @category
 
     respond_to do |format|
       if @product.save
         format.html { redirect_to category_product_path(@product.category, @product), notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        format.json { render :show, status: :created, location: category_product_path(@category, @product) }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
