@@ -1,6 +1,6 @@
 # Fustany-Challenge
 
-[project.com](https://project.com)
+[project.com](https://fustany-challenge.herokuapp.com)
 
 ## Install
 
@@ -43,4 +43,9 @@ rails db:create db:migrate db:seed
 
 ```shell
 rails s
+```
+
+## Run testing with Rspec 
+```shell 
+rspec 
 ```
