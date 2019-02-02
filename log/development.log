@@ -9498,3 +9498,168 @@ Processing by CategoriesController#index as JSON
 Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.3ms)
 
 
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 11]]
+Started GET "/categories/4/products/1/add_to_favourite.json" for 127.0.0.1 at 2019-02-02 03:26:43 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/categories/4/products/1/add_to_favourite.json"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started PUT "/categories/4/products/1/add_to_favourite.json" for 127.0.0.1 at 2019-02-02 03:26:50 +0200
+Processing by ProductsController#add_to_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"1", "product"=>{}}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  Rendering products/add_to_favourite.json.jbuilder
+  Rendered shared/_category.json.jbuilder (0.5ms)
+  Rendered products/_product.json.jbuilder (1.4ms)
+  Rendered products/add_to_favourite.json.jbuilder (2.4ms)
+Completed 201 Created in 27ms (Views: 4.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/favourits.json" for 127.0.0.1 at 2019-02-02 03:27:10 +0200
+Processing by FavouritsController#index as JSON
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.json.jbuilder
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  Rendered shared/_category.json.jbuilder (1.6ms)
+  Rendered products/_product.json.jbuilder (2.8ms)
+  Rendered favourits/index.json.jbuilder (18.2ms)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    1: json.extract! category, :id, :name, :created_at, :updated_at
+    2: json.url category_url(category, format: :json)
+  
+app/views/shared/_category.json.jbuilder:1:in `_app_views_shared__category_json_jbuilder___2306085475332403356_70340516441360'
+app/views/products/_product.json.jbuilder:3:in `block in _app_views_products__product_json_jbuilder__2433630672861706978_70340502584160'
+app/views/products/_product.json.jbuilder:2:in `_app_views_products__product_json_jbuilder__2433630672861706978_70340502584160'
+app/views/favourits/index.json.jbuilder:1:in `_app_views_favourits_index_json_jbuilder__803819109225336451_11651200'
+Started GET "/favourits.json" for 127.0.0.1 at 2019-02-02 03:28:29 +0200
+Processing by FavouritsController#index as JSON
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.json.jbuilder
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  Rendered shared/_category.json.jbuilder (1.7ms)
+  Rendered products/_product.json.jbuilder (2.6ms)
+  Rendered favourits/index.json.jbuilder (4.6ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    1: json.extract! category, :id, :name, :created_at, :updated_at
+    2: json.url category_url(category, format: :json)
+  
+app/views/shared/_category.json.jbuilder:1:in `_app_views_shared__category_json_jbuilder___2306085475332403356_70340495402180'
+app/views/products/_product.json.jbuilder:3:in `block in _app_views_products__product_json_jbuilder__2433630672861706978_70340495458640'
+app/views/products/_product.json.jbuilder:2:in `_app_views_products__product_json_jbuilder__2433630672861706978_70340495458640'
+app/views/favourits/index.json.jbuilder:1:in `_app_views_favourits_index_json_jbuilder__803819109225336451_70340495795000'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "products"."favourite" FROM "products"[0m
+Started GET "/favourits.json" for 127.0.0.1 at 2019-02-02 03:30:01 +0200
+Processing by FavouritsController#index as JSON
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.json.jbuilder
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered shared/_category.json.jbuilder (0.8ms)
+  Rendered favourits/_product.json.jbuilder (3.1ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered shared/_category.json.jbuilder (0.3ms)
+  Rendered favourits/_product.json.jbuilder (1.6ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered shared/_category.json.jbuilder (0.5ms)
+  Rendered favourits/_product.json.jbuilder (2.4ms)
+  Rendered favourits/index.json.jbuilder (10.5ms)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.5ms)
+
+
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."category_id" = ? LIMIT ?[0m  [["category_id", 4], ["LIMIT", 11]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "products"."id" FROM "products" WHERE "products"."category_id" = ?[0m  [["category_id", 4]]
+Started PUT "/categories/4/products/14/add_to_favourite.json" for 127.0.0.1 at 2019-02-02 03:30:32 +0200
+Processing by ProductsController#add_to_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"14", "product"=>{}}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "t"], ["updated_at", "2019-02-02 01:30:32.940217"], ["id", 14]]
+  [1m[35m (144.4ms)[0m  [1m[36mcommit transaction[0m
+  Rendering products/add_to_favourite.json.jbuilder
+  Rendered shared/_category.json.jbuilder (1.3ms)
+  Rendered products/_product.json.jbuilder (3.0ms)
+  Rendered products/add_to_favourite.json.jbuilder (5.3ms)
+Completed 201 Created in 163ms (Views: 10.9ms | ActiveRecord: 145.3ms)
+
+
+Started GET "/favourits.json" for 127.0.0.1 at 2019-02-02 03:30:41 +0200
+Processing by FavouritsController#index as JSON
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.json.jbuilder
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered shared/_category.json.jbuilder (0.9ms)
+  Rendered favourits/_product.json.jbuilder (3.6ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered shared/_category.json.jbuilder (0.7ms)
+  Rendered favourits/_product.json.jbuilder (2.5ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered shared/_category.json.jbuilder (0.6ms)
+  Rendered favourits/_product.json.jbuilder (2.4ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered favourits/_product.json.jbuilder (1.9ms)
+  Rendered favourits/index.json.jbuilder (15.0ms)
+Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.5ms)
+
+
+Started PUT "/categories/4/products/14/remove_from_favourite.json" for 127.0.0.1 at 2019-02-02 03:31:10 +0200
+Processing by ProductsController#remove_from_favourite as JSON
+  Parameters: {"category_id"=>"4", "id"=>"14", "product"=>{}}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "products" SET "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["favourite", "f"], ["updated_at", "2019-02-02 01:31:10.683903"], ["id", 14]]
+  [1m[35m (119.5ms)[0m  [1m[36mcommit transaction[0m
+  Rendering products/remove_from_favourite.json.jbuilder
+  Rendered shared/_category.json.jbuilder (0.9ms)
+  Rendered products/_product.json.jbuilder (2.1ms)
+  Rendered products/remove_from_favourite.json.jbuilder (3.8ms)
+Completed 201 Created in 145ms (Views: 18.5ms | ActiveRecord: 120.1ms)
+
+

@@ -62,4 +62,6 @@ rspec
 
 /categories/:id/products/:id/add_to_favourite.json GET
 /categories/:id/products/:id/remove_to_favourite.json GET
+
+/favourits.json GET
 ```
