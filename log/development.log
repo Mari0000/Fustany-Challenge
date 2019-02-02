@@ -9448,3 +9448,53 @@ Processing by CategoriesController#show as JSON
 Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.1ms)
 
 
+Started GET "/categories/4" for 127.0.0.1 at 2019-02-02 02:36:55 +0200
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  Rendered categories/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 154ms (Views: 151.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2019-02-02 02:36:57 +0200
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 27ms (Views: 25.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories.json" for 127.0.0.1 at 2019-02-02 02:37:00 +0200
+Processing by CategoriesController#index as JSON
+  Rendering categories/index.json.jbuilder
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.json.jbuilder (3.1ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (Missing partial categories/_category with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:jbuilder]}. Searched in:
+  * "/home/mariosobhy/Desktop/Fustany-Challenge/app/views"
+):
+    1: json.array! @categories, partial: 'categories/category', as: :category
+  
+app/views/categories/index.json.jbuilder:1:in `_app_views_categories_index_json_jbuilder___3922362921097679750_70340503116040'
+Started GET "/categories.json" for 127.0.0.1 at 2019-02-02 02:37:31 +0200
+Processing by CategoriesController#index as JSON
+  Rendering categories/index.json.jbuilder
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered shared/_category.json.jbuilder (1.3ms)
+  Rendered shared/_category.json.jbuilder (0.3ms)
+  Rendered shared/_category.json.jbuilder (0.3ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered shared/_category.json.jbuilder (0.2ms)
+  Rendered categories/index.json.jbuilder (10.1ms)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.3ms)
+
+
