@@ -57,11 +57,11 @@ rspec
 /categories/:id/products.json GET
 /categories/:id/products/:id.json GET
 
-/categories.json POST 
-/categories/:id/products.json POST
+/categories.json POST { "category": { name: 'cat1' } }
+/categories/:id/products.json POST { "product": { name: 'product1', price: 100.0, quantity: 2, discount: 20.0 } }
 
-/categories/:id/products/:id/add_to_favourite.json GET
-/categories/:id/products/:id/remove_to_favourite.json GET
+/categories/:id/products/:id/add_to_favourite.json PUT
+/categories/:id/products/:id/remove_to_favourite.json PUT
 
 /favourits.json GET
 ```

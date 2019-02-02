@@ -1,1 +1,1 @@
-json.array! @products, partial: 'favourits/product', as: :product
+json.array! @products, partial: 'shared/product', as: :product

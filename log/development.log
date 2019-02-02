@@ -9663,3 +9663,62 @@ Processing by ProductsController#remove_from_favourite as JSON
 Completed 201 Created in 145ms (Views: 18.5ms | ActiveRecord: 120.1ms)
 
 
+Started GET "/favourits.json" for 127.0.0.1 at 2019-02-02 03:36:41 +0200
+Processing by FavouritsController#index as JSON
+  Parameters: {"favourit"=>{}}
+  Rendering favourits/index.json.jbuilder
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."favourite" = ?[0m  [["favourite", "t"]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered shared/_category.json.jbuilder (0.8ms)
+  Rendered shared/_product.json.jbuilder (3.0ms)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered shared/_category.json.jbuilder (0.4ms)
+  Rendered shared/_product.json.jbuilder (2.1ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered shared/_category.json.jbuilder (0.4ms)
+  Rendered shared/_product.json.jbuilder (2.3ms)
+  Rendered favourits/index.json.jbuilder (11.1ms)
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/categories/4/products.json" for 127.0.0.1 at 2019-02-02 03:37:46 +0200
+Processing by ProductsController#create as JSON
+  Parameters: {"product"=>{"name"=>"mario1ass", "price"=>100, "quantity"=>10}, "category_id"=>"4"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "quantity", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "mario1ass"], ["price", 100.0], ["quantity", 10], ["category_id", 4], ["created_at", "2019-02-02 01:37:46.058291"], ["updated_at", "2019-02-02 01:37:46.058291"]]
+  [1m[35m (193.9ms)[0m  [1m[36mcommit transaction[0m
+  Rendering products/show.json.jbuilder
+  Rendered shared/_category.json.jbuilder (0.6ms)
+  Rendered shared/_product.json.jbuilder (2.0ms)
+  Rendered products/show.json.jbuilder (2.9ms)
+Completed 201 Created in 205ms (Views: 4.8ms | ActiveRecord: 194.9ms)
+
+
+Started PUT "/categories/4/products/18.json" for 127.0.0.1 at 2019-02-02 03:38:28 +0200
+Processing by ProductsController#update as JSON
+  Parameters: {"product"=>{"name"=>"Xioami A2 256G", "quantity"=>100, "favourite"=>true}, "category_id"=>"4", "id"=>"18"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "products" SET "name" = ?, "quantity" = ?, "favourite" = ?, "updated_at" = ? WHERE "products"."id" = ?[0m  [["name", "Xioami A2 256G"], ["quantity", 100], ["favourite", "t"], ["updated_at", "2019-02-02 01:38:28.270657"], ["id", 18]]
+  [1m[35m (147.5ms)[0m  [1m[36mcommit transaction[0m
+  Rendering products/show.json.jbuilder
+  Rendered shared/_category.json.jbuilder (0.9ms)
+  Rendered shared/_product.json.jbuilder (1.9ms)
+  Rendered products/show.json.jbuilder (3.2ms)
+Completed 200 OK in 160ms (Views: 5.0ms | ActiveRecord: 148.1ms)
+
+
+Started DELETE "/categories/4/products/18.json" for 127.0.0.1 at 2019-02-02 03:38:51 +0200
+Processing by ProductsController#destroy as JSON
+  Parameters: {"category_id"=>"4", "id"=>"18", "product"=>{}}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 18]]
+  [1m[35m (164.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 169ms (ActiveRecord: 165.8ms)
+
+
