@@ -60,6 +60,12 @@ rspec
 /categories.json POST { "category": { name: 'cat1' } }
 /categories/:id/products.json POST { "product": { name: 'product1', price: 100.0, quantity: 2, discount: 20.0 } }
 
+/categories/:id.json PUT { "category": { name: 'cat1' } }
+/categories/:id/products/:id.json PUT { "product": { name: 'product1', price: 100.0, quantity: 2, discount: 20.0 } }
+
+/categories/:id.json DELETE 
+/categories/:id/products/:id.json DELETE 
+
 /categories/:id/products/:id/add_to_favourite.json PUT
 /categories/:id/products/:id/remove_to_favourite.json PUT
 
