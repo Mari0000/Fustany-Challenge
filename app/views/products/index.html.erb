@@ -11,7 +11,7 @@
         <div class="card-action">
           <%= link_to 'Show', category_product_path(product.category, product) %>
           <%= link_to 'Edit', edit_category_product_path(product.category, product) %>
-          <%= link_to 'Favourite', add_to_favourite_category_product_path(product.category, product) %>
+          <%= link_to 'Favourite', add_to_favourite_category_product_path(product.category, product), method: :put %>
           <%= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>

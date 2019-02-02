@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         format.html { redirect_to favourits_path, notice: 'Product was successfully added to favourits.' }
-        format.json { render :add_to_favourite, status: :created, location: category_product_path(@category, @product) }
+        format.json { render :add_to_favourite, status: :ok, location: category_product_path(@category, @product) }
       else
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         format.html { redirect_to favourits_path, notice: 'Product was successfully removed from favourits.' }
-        format.json { render :remove_from_favourite, status: :created, location: category_product_path(@category, @product) }
+        format.json { render :remove_from_favourite, status: :ok, location: category_product_path(@category, @product) }
       else
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
