@@ -49,3 +49,17 @@ rails s
 ```shell 
 rspec 
 ```
+
+## Run APIs 
+```shell
+/categories.json GET
+/categories/:id.json GET
+/categories/:id/products.json GET
+/categories/:id/products/:id.json GET
+
+/categories.json POST 
+/categories/:id/products.json POST
+
+/categories/:id/products/:id/add_to_favourite.json GET
+/categories/:id/products/:id/remove_to_favourite.json GET
+```
