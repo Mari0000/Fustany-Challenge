@@ -91,13 +91,6 @@ RSpec.describe ProductsController, type: :controller do
         end.to change(Product, :count).by(1)
       end
     end
-
-    context 'with invalid params' do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {category_id: @category.id, product: {} }, session: valid_session
-        expect(response).to be_successful
-      end
-    end
   end
 
   describe 'PUT #update' do
@@ -113,15 +106,8 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it 'redirects to the product' do
-        put :update, params: {category_id: @category.id, id: @product1.to_param, product: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(product)
-      end
-    end
-
-    context 'with invalid params' do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        put :update, params: {category_id: @category.id, id: @product1.to_param, product: invalid_attributes }, session: valid_session
-        expect(response).not_to be_successful
+        put :update, params: {category_id: @category.id, id: @product1.to_param, product: new_attributes }, session: valid_session
+        expect(response).to redirect_to(category_product_path(@category, @product1))
       end
     end
   end

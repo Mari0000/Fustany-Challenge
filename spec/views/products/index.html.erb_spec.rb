@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'products/index', type: :view do
   before do
-    assign(:products, [
-             Product.create!,
-             Product.create!
-           ])
+    @category = FactoryBot.create(:category)
+    assign(:products, create_list(:product, 10))
+    controller.request.path_parameters[:category_id] = @category.id
   end
 
   it 'renders a list of products' do

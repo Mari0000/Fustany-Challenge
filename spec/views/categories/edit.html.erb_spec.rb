@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'categories/edit', type: :view do
   before do
-    @category = assign(:category, Category.create!)
+    @category = assign(:category, FactoryBot.create(:category))
   end
 
   it 'renders the edit category form' do
